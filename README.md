@@ -8,7 +8,7 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, Tailwi
 
 Click here to your portfolio template now:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Framxcodes%2Fsleek-portfolio&env=GMAIL_USER,GMAIL_APP_PASSWORD,GITHUB_TOKEN,NEXT_PUBLIC_URL,NEXT_PUBLIC_UMAMI_SRC,NEXT_PUBLIC_UMAMI_ID)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FNikhilesh-sarraf%2FPortfolio-website&env=GMAIL_USER,GMAIL_APP_PASSWORD,GITHUB_TOKEN,NEXT_PUBLIC_URL,NEXT_PUBLIC_UMAMI_SRC,NEXT_PUBLIC_UMAMI_ID)
 
 ## Features
 
@@ -80,8 +80,8 @@ NEXT_PUBLIC_UMAMI_ID="your-umami-website-id"
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ramxcodes/sleek-portfolio.git
-   cd sleek-portfolio
+   git clone https://github.com/Nikhilesh-sarraf/Portfolio-website.git
+   cd Portfolio-website
    ```
 
 2. Install dependencies:
