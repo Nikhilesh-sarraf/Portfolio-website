@@ -1,6 +1,6 @@
 # Sleek Portfolio by ramxcodes
 
-A modern, responsive portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and Shadcn UI. Features a blog system, project showcase, work experience timeline, and contact form with Telegram integration.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and Shadcn UI. Features a blog system, project showcase, work experience timeline, real-time GitHub integration, and contact form with Gmail/Nodemailer support.
 
 ![Portfolio Preview](/public/meta/hero.png)
 
@@ -8,7 +8,7 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, Tailwi
 
 Click here to your portfolio template now:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Framxcodes%2Fsleek-portfolio&env=TELEGRAM_BOT_TOKEN,TELEGRAM_CHAT_ID,GEMINI_API_KEY,NEXT_PUBLIC_URL,NEXT_PUBLIC_UMAMI_SRC,NEXT_PUBLIC_UMAMI_ID)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Framxcodes%2Fsleek-portfolio&env=GMAIL_USER,GMAIL_APP_PASSWORD,GITHUB_TOKEN,NEXT_PUBLIC_URL,NEXT_PUBLIC_UMAMI_SRC,NEXT_PUBLIC_UMAMI_ID)
 
 ## Features
 
@@ -18,7 +18,8 @@ Click here to your portfolio template now:
 - **Dark/Light** mode
 - **Responsive** design
 - **MDX** for blog posts and project details
-- **Contact Form** with Telegram integration
+- **Contact Form** with Nodemailer (Gmail) integration
+- **GitHub Integration** for real-time stats fetching
 - **SEO** optimized
 - **TypeScript** for type safety
 - **Umami Analytics** for privacy-focused web analytics
@@ -35,30 +36,28 @@ Before you begin, ensure you have the following installed:
 Create a `.env` file in the root directory with the following variables:
 
 ```env
-TELEGRAM_BOT_TOKEN="your-token"
-TELEGRAM_CHAT_ID="your-chat-id"
-GEMINI_API_KEY="your-api-key"
+GITHUB_TOKEN="your-github-personal-access-token"
+GMAIL_USER="your-email@gmail.com"
+GMAIL_APP_PASSWORD="your-gmail-app-password"
 NODE_ENV="development"
 NEXT_PUBLIC_URL="http://localhost:3000"
 NEXT_PUBLIC_UMAMI_SRC="your-umami-script-url"
 NEXT_PUBLIC_UMAMI_ID="your-umami-website-id"
 ```
 
-### Setting up Telegram Integration
+### Setting up Gmail Contact Form Integration
 
-1. Create a new bot with [@BotFather](https://t.me/botfather) on Telegram
-2. Copy the bot token and add it to your `.env` file as `TELEGRAM_BOT_TOKEN`
-3. Start a chat with your bot and send any message (e.g., "hello")
-4. Get your chat ID:
+1. Go to your [Google Account Settings](https://myaccount.google.com/security) -> Security
+2. Enable 2-Step Verification if you haven't already
+3. Create an **App Password** for your account (search for "App passwords" in settings)
+4. Add your email address to your `.env` file as `GMAIL_USER`
+5. Add the generated 16-character App Password to `.env` as `GMAIL_APP_PASSWORD`
 
-   ```bash
-   # Run the test script to get your chat ID
-   bun run test-telegram
-   ```
+### Setting up GitHub Stats Integration
 
-   - The script will show your Chat ID from the message you sent
-   - Copy the Chat ID and add it to your `.env` file as `TELEGRAM_CHAT_ID`
-   - Run the script again to verify everything works
+1. Go to your [GitHub Developer Settings](https://github.com/settings/tokens) -> Personal access tokens (classic)
+2. Generate a new token (no specific scopes required for public profile fetching)
+3. Copy the token and add it to your `.env` file as `GITHUB_TOKEN`
 
 ### Setting up Umami Analytics
 
