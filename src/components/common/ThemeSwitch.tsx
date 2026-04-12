@@ -15,7 +15,10 @@ const playToggleSound = () => {
     const audio = new window.Audio('/assets/camera.mp3');
     audio.volume = 0.5; // Adjust the volume if needed
     audio.play().catch((e) => {
-      console.warn('Could not play the audio file. Make sure /assets/camera.mp3 exists!', e);
+      console.warn(
+        'Could not play the audio file. Make sure /assets/camera.mp3 exists!',
+        e,
+      );
     });
   } catch (e) {
     console.error('Audio playback failed', e);
@@ -114,6 +117,7 @@ export const useThemeToggle = ({
     }
 
     document.startViewTransition(switchTheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
 
   const setCrazyDarkTheme = useCallback(() => {
@@ -136,6 +140,7 @@ export const useThemeToggle = ({
     }
 
     document.startViewTransition(switchTheme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
 
   return {

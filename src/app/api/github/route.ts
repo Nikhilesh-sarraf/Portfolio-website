@@ -50,27 +50,41 @@ export async function GET(request: Request) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('GitHub API error details:', response.status, errorText);
-      return NextResponse.json({ error: 'GitHub API error' }, { status: response.status });
+      return NextResponse.json(
+        { error: 'GitHub API error' },
+        { status: response.status },
+      );
     }
 
     const data = await response.json();
-    
+
     if (data.errors) {
       console.error('GitHub GraphQL errors:', data.errors);
-      return NextResponse.json({ error: 'GitHub GraphQL error', details: data.errors }, { status: 500 });
+      return NextResponse.json(
+        { error: 'GitHub GraphQL error', details: data.errors },
+        { status: 500 },
+      );
     }
 
-    const weeks = data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks;
+    const weeks =
+      data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks;
     if (!weeks) {
-      return NextResponse.json({ error: 'Invalid data format from GitHub' }, { status: 500 });
+      return NextResponse.json(
+        { error: 'Invalid data format from GitHub' },
+        { status: 500 },
+      );
     }
 
     // Flatten weeks into an array of days
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const contributions = weeks.flatMap((week: any) => week.contributionDays);
 
     return NextResponse.json({ contributions });
   } catch (error) {
     console.error('Failed to fetch from GitHub:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

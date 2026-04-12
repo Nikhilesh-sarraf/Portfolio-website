@@ -12,7 +12,6 @@ import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import React from 'react';
 
-
 // Technology mapping for dynamic components
 const TechnologyComponents: Record<string, React.ComponentType> = {
   'Next.js': NextJs,
@@ -289,7 +288,7 @@ export const ProjectComponents = {
       return '';
     };
 
-    const codeText = getTextContent(children);
+    getTextContent(children);
 
     return (
       <div className="group relative mb-4">

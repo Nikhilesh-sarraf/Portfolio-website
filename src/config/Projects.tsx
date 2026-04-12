@@ -1,4 +1,3 @@
-import BootStrap from '@/components/technologies/BootStrap';
 import CSS from '@/components/technologies/CSS';
 import Html from '@/components/technologies/Html';
 import JavaScript from '@/components/technologies/JavaScript';

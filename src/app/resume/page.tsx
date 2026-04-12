@@ -5,7 +5,6 @@ import { generateMetadata as getMetadata } from '@/config/Meta';
 import { resumeConfig } from '@/config/Resume';
 import { Download } from 'lucide-react';
 import { Metadata } from 'next';
-import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -38,10 +37,7 @@ export default function ResumePage() {
             </p>
           </div>
           <Button variant="outline" asChild className="shrink-0 gap-2">
-            <a
-              href={resumeConfig.url}
-              download={resumeConfig.downloadFileName}
-            >
+            <a href={resumeConfig.url} download={resumeConfig.downloadFileName}>
               <Download className="size-4" />
               Download PDF
             </a>
