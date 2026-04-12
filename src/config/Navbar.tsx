@@ -4,24 +4,25 @@ export interface NavItem {
 }
 
 export const navbarConfig = {
-  logo: {
-    src: '/assets/logo.png',
-    alt: 'logo',
-    width: 100,
-    height: 100,
-  },
+  /** Shown next to the Resume nav link for quick download */
+  resumePdfHref: '/resume/nikhilesh-resume.pdf',
+  resumePdfDownloadName: 'Nikhilesh-Sarraf-Resume.pdf',
   navItems: [
+    {
+      label: 'Home',
+      href: '/',
+    },
     {
       label: 'Work',
       href: '/work-experience',
     },
     {
-      label: 'Blogs',
-      href: '/blog',
+      label: 'Education',
+      href: '/education',
     },
     {
-      label: 'Projects',
-      href: '/projects',
+      label: 'Resume',
+      href: '/resume',
     },
   ] as NavItem[],
 };

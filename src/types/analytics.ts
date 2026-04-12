@@ -33,7 +33,7 @@ export type AnalyticsEventData = {
   };
   content_view: {
     contentId: string;
-    contentType: 'blog' | 'project' | 'experience';
+    contentType: 'project' | 'experience';
     section: string;
   };
   chat_message_sent: {

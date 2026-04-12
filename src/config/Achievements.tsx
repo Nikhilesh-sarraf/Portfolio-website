@@ -1,28 +1,40 @@
-export const certificates = [
+export const certificates: { file: string; title: string; issuer: string; date: string }[] = [
   {
-    file: '/blog/frontend-part-1.png',
-    title: 'SSoC Certificate',
-    issuer: 'Summer of Code (SSoC)',
-    date: '2025-10-10',
+    file: '/certificates/konverge-hackathon.png.png',
+    title: 'KONVERGE Hackathon - Certificate of Participation',
+    issuer: 'Kinetex Lab & k1000',
+    date: 'Recent',
   },
   {
-    file: '/blog/how-to-be-me.png',
-    title: 'Example Certificate 1',
-    issuer: 'Example Issuer',
-    date: '2024-01-01',
+    file: '/certificates/coursera-business.png.png',
+    title: 'Business for Good: Fundamentals of Corporate Responsibility',
+    issuer: 'London Business School (Coursera)',
+    date: 'Mar 5, 2026',
   },
   {
-    file: '/blog/frontend-part-1.png',
-    title: 'Example Certificate 2',
-    issuer: 'Example Issuer',
-    date: '2023-08-01',
+    file: '/certificates/coursera-governance.png.png',
+    title: 'Corporate Governance',
+    issuer: 'Starweaver (Coursera)',
+    date: 'Feb 24, 2026',
   },
   {
-    file: '/blog/how-to-be-me.png',
-    title: 'SSoC Participation Certificate',
-    issuer: 'SSoC',
-    date: '2025-10-10',
+    file: '/certificates/coursera-ethics.png.png',
+    title: 'Ethical Decision Making for Success in the Tech Industry',
+    issuer: 'University of Colorado Boulder (Coursera)',
+    date: 'Mar 5, 2026',
   },
+  {
+    file: '/certificates/nexus-appreciation.png.png',
+    title: 'Certificate of Appreciation - Nexus',
+    issuer: 'Nexus (Rohit Negi)',
+    date: 'Aug 7, 2025',
+  },
+  {
+    file: '/certificates/oop-java.png.png',
+    title: 'Object Oriented Programming using Java',
+    issuer: 'SkillUP',
+    date: 'Apr 3, 2026',
+  }
 ];
 
 const achievementsConfig = {

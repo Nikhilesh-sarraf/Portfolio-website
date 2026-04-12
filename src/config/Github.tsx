@@ -6,12 +6,12 @@
  */
 
 export const githubConfig = {
-  username: 'ramxcodes',
+  username: 'Nikhilesh-sarraf',
   apiUrl: 'https://github-contributions-api.deno.dev',
 
   // Display settings
   title: 'GitHub Activity',
-  subtitle: 'coding journey over the past year',
+  subtitle: 'coding journey in 2026',
 
   // Chart settings
   blockSize: 11,
@@ -39,7 +39,7 @@ export const githubConfig = {
   weekdays: ['', 'M', '', 'W', '', 'F', ''],
 
   // Total count label template
-  totalCountLabel: '{{count}} contributions in the last year',
+  totalCountLabel: '{{count}} contributions in 2026',
 
   // Theme configuration for dark and light modes
   theme: {

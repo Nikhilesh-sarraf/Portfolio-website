@@ -173,6 +173,19 @@
   filter: blur(3px);
 }
 
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tech-marquee {
+  animation: tech-marquee 45s linear infinite;
+}
+
 /* Removed global View Transition API overrides to allow Skiper toggle styles to apply */
 
 /* Custom button inner shadow */

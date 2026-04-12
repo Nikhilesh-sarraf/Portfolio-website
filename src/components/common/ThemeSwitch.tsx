@@ -8,6 +8,20 @@ import Moon from '../svgs/Moon';
 import Sun from '../svgs/Sun';
 import { Button } from '../ui/button';
 
+const playToggleSound = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    // Looks for a file named "camera.mp3" in the public/assets directory
+    const audio = new window.Audio('/assets/camera.mp3');
+    audio.volume = 0.5; // Adjust the volume if needed
+    audio.play().catch((e) => {
+      console.warn('Could not play the audio file. Make sure /assets/camera.mp3 exists!', e);
+    });
+  } catch (e) {
+    console.error('Audio playback failed', e);
+  }
+};
+
 export const useThemeToggle = ({
   variant = 'circle',
   start = 'center',
@@ -50,6 +64,7 @@ export const useThemeToggle = ({
 
   const toggleTheme = useCallback(() => {
     setIsDark(!isDark);
+    playToggleSound();
 
     const animation = createAnimation(variant, start, blur, gifUrl);
 
@@ -80,6 +95,7 @@ export const useThemeToggle = ({
   ]);
 
   const setCrazyLightTheme = useCallback(() => {
+    if (isDark) playToggleSound();
     setIsDark(false);
 
     const animation = createAnimation(variant, start, blur, gifUrl);
@@ -101,6 +117,7 @@ export const useThemeToggle = ({
   }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
 
   const setCrazyDarkTheme = useCallback(() => {
+    if (!isDark) playToggleSound();
     setIsDark(true);
 
     const animation = createAnimation(variant, start, blur, gifUrl);

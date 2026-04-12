@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import * as z from 'zod';
 
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -62,24 +63,27 @@ function checkRateLimit(clientIP: string): {
   };
 }
 
-async function sendToTelegram(data: {
+async function sendToGmail(data: {
   name: string;
   email: string;
   phone: string;
   message: string;
 }): Promise<boolean> {
-  const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
-  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
 
-  if (!telegramToken) {
-    console.error('TELEGRAM_BOT_TOKEN not configured');
+  if (!gmailUser || !gmailAppPassword) {
+    console.error('GMAIL_USER or GMAIL_APP_PASSWORD not configured');
     return false;
   }
 
-  if (!telegramChatId) {
-    console.error('TELEGRAM_CHAT_ID not configured');
-    return false;
-  }
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: gmailUser,
+      pass: gmailAppPassword,
+    },
+  });
 
   const message = `
 🔔 *New Contact Form Submission*
@@ -96,29 +100,17 @@ ${data.message.trim()}
   `.trim();
 
   try {
-    const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-
-    const response = await fetch(telegramUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: telegramChatId,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
+    await transporter.sendMail({
+      from: `"${data.name}" <${gmailUser}>`,
+      to: gmailUser,
+      replyTo: data.email,
+      subject: `New Portfolio Message from ${data.name}`,
+      text: message,
     });
 
-    if (response.ok) {
-      return true;
-    } else {
-      const errorText = await response.text();
-      console.error('Failed to send to Telegram:', errorText);
-      return false;
-    }
+    return true;
   } catch (error) {
-    console.error('Error sending to Telegram:', error);
+    console.error('Error sending email:', error);
     return false;
   }
 }
@@ -148,9 +140,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = contactSchema.parse(body);
 
-    const telegramSent = await sendToTelegram(validatedData);
+    const emailSent = await sendToGmail(validatedData);
 
-    if (!telegramSent) {
+    if (!emailSent) {
       return NextResponse.json(
         { error: 'Failed to send message. Please try again.' },
         { status: 500 },

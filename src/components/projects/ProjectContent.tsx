@@ -48,7 +48,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
             src={image}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
           />
         </div>

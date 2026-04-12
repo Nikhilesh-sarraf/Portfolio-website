@@ -1,3 +1,5 @@
 export const resumeConfig = {
-  url: 'https://drive.google.com/file/d/1ormIiMVpWGAMOZ3FZVj_XrKPkEmPlPQj/preview',
+  /** Served from /public — update the file in public/resume/ to change the document. */
+  url: '/resume/nikhilesh-resume.pdf',
+  downloadFileName: 'Nikhilesh-Sarraf-Resume.pdf',
 };

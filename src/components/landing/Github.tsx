@@ -32,14 +32,11 @@ type GitHubContributionResponse = {
     | 'FOURTH_QUARTILE';
 };
 
-// Helper function to filter contributions to past year
-function filterLastYear(contributions: ContributionItem[]): ContributionItem[] {
-  const oneYearAgo = new Date();
-  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-
+// Helper function to filter contributions to a specific year
+function filterYear(contributions: ContributionItem[], year: number): ContributionItem[] {
   return contributions.filter((item) => {
     const itemDate = new Date(item.date);
-    return itemDate >= oneYearAgo;
+    return itemDate.getFullYear() === year;
   });
 }
 
@@ -55,7 +52,7 @@ export default function Github() {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `${githubConfig.apiUrl}/${githubConfig.username}.json`,
+          `/api/github?username=${githubConfig.username}`
         );
         const data: { contributions?: unknown[] } = await response.json();
 
@@ -98,8 +95,8 @@ export default function Github() {
             );
             setTotalContributions(total);
 
-            // Filter to show only the past year
-            const filteredContributions = filterLastYear(validContributions);
+            // Filter to show only the specific year 2026
+            const filteredContributions = filterYear(validContributions, 2026);
             setContributions(filteredContributions);
           } else {
             setHasError(true);

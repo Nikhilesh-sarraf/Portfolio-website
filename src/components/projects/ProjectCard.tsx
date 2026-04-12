@@ -30,12 +30,19 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
+  const titleHref = project.details
+    ? project.projectDetailsPageSlug
+    : project.link;
+  const titleExternal = !project.details;
+
+  const techLoop = [...project.technologies, ...project.technologies];
+
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
           <Image
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-top"
             src={project.image}
             alt={project.title}
             width={1920}
@@ -71,7 +78,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-4">
           {/* Project Header - Title and Icons */}
           <div className="flex items-center justify-between gap-4">
-            <Link href={project.projectDetailsPageSlug}>
+            <Link
+              href={titleHref}
+              target={titleExternal ? '_blank' : undefined}
+              rel={titleExternal ? 'noopener noreferrer' : undefined}
+            >
               <h3 className="group-hover:text-primary text-xl leading-tight font-semibold hover:cursor-pointer">
                 {project.title}
               </h3>
@@ -83,6 +94,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
                     href={project.link}
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <Website />
                   </Link>
@@ -91,46 +103,49 @@ export function ProjectCard({ project }: ProjectCardProps) {
                   <p>View Website</p>
                 </TooltipContent>
               </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  {project.github && (
+              {project.github ? (
+                <Tooltip>
+                  <TooltipTrigger>
                     <Link
                       className="text-secondary hover:text-primary flex size-6 items-center justify-center transition-colors"
                       href={project.github}
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <Github />
                     </Link>
-                  )}
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View GitHub</p>
-                </TooltipContent>
-              </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>View GitHub</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : null}
             </div>
           </div>
 
           {/* Description */}
           <p className="text-secondary line-clamp-3">{project.description}</p>
 
-          {/* Technologies */}
+          {/* Technologies — infinite marquee */}
           <div>
             <h4 className="text-secondary mb-2 text-sm font-medium">
               Technologies
             </h4>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((technology, index) => (
-                <Tooltip key={index}>
-                  <TooltipTrigger>
-                    <div className="size-6 transition-all duration-300 hover:scale-120 hover:cursor-pointer">
-                      {technology.icon}
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{technology.name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
+            <div className="relative overflow-hidden py-0.5 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+              <div className="animate-tech-marquee flex w-max gap-3">
+                {techLoop.map((technology, index) => (
+                  <Tooltip key={`${technology.name}-${index}`}>
+                    <TooltipTrigger>
+                      <div className="size-6 shrink-0 transition-all duration-300 hover:scale-110 hover:cursor-default">
+                        {technology.icon}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{technology.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
             </div>
           </div>
         </div>

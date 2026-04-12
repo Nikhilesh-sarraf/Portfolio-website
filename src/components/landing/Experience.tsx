@@ -8,12 +8,23 @@ import { ExperienceCard } from '../experience/ExperienceCard';
 import { Button } from '../ui/button';
 
 export default function Experience() {
+  if (experiences.length === 0) {
+    return null;
+  }
+
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Experience" />
-      <div className="mt-4 flex flex-col gap-8">
-        {experiences.slice(0, 2).map((experience: Experience) => (
-          <ExperienceCard key={experience.company} experience={experience} />
+      <div className="mt-4 flex flex-col">
+        {experiences.slice(0, 2).map((experience: Experience, index: number) => (
+          <div
+            key={experience.company}
+            className={
+              index > 0 ? 'border-border/40 border-t pt-12' : undefined
+            }
+          >
+            <ExperienceCard experience={experience} />
+          </div>
         ))}
       </div>
       <div className="mt-8 flex justify-center">

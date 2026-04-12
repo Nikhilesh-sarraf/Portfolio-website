@@ -5,6 +5,7 @@ import { experiences } from '@/config/Experience';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import { Metadata } from 'next';
 import { Robots } from 'next/dist/lib/metadata/types/metadata-types';
+import { Link } from 'next-view-transitions';
 
 export const metadata: Metadata = {
   ...getMetadata('/work-experience'),
@@ -26,12 +27,26 @@ export default function WorkExperiencePage() {
     <Container className="py-16">
       <div className="space-y-8">
         {/* Header */}
-        <div className="space-y-4 text-center">
+        <div className="space-y-3">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             Work Experience
           </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            My work experiences across different companies and roles.
+          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
+            Full-time roles will appear here. For now, see my{' '}
+            <Link
+              className="text-primary underline-offset-4 hover:underline"
+              href="/projects"
+            >
+              projects
+            </Link>{' '}
+            and{' '}
+            <Link
+              className="text-primary underline-offset-4 hover:underline"
+              href="/resume"
+            >
+              resume
+            </Link>
+            .
           </p>
         </div>
 

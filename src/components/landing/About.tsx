@@ -10,28 +10,27 @@ export default function About() {
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="About" heading="Me" />
-      {/* About me */}
       <div className="mt-8 flex flex-col gap-4 md:flex-row">
         <Image
-          src="/assets/logo.png"
-          alt="About"
-          width={100}
-          height={100}
-          className="border-secondary size-60 rounded-md border-2 bg-blue-300 dark:bg-yellow-300"
+          src="/assets/avatar.png"
+          alt={about.name}
+          width={240}
+          height={240}
+          className="border-secondary size-60 shrink-0 rounded-md border-2 object-cover"
         />
-        <div className="mt-4">
+        <div className="mt-4 min-w-0">
           <h3 className="text-2xl font-bold">{about.name}</h3>
           <p className="text-secondary mt-4">{about.description}</p>
           <p className="text-secondary mt-8 font-bold">Skills</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-3">
             {mySkills.map((skill) => (
-              <Tooltip key={skill.key}>
+              <Tooltip key={skill.name}>
                 <TooltipTrigger asChild>
-                  <div className="mt-4 size-6 hover:cursor-pointer">
-                    {skill}
+                  <div className="flex size-8 cursor-default items-center justify-center [&_svg]:size-6">
+                    {skill.icon}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent>{skill.key}</TooltipContent>
+                <TooltipContent>{skill.name}</TooltipContent>
               </Tooltip>
             ))}
           </div>

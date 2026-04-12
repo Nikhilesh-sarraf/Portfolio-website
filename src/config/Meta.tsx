@@ -1,6 +1,22 @@
 import { about } from './About';
 import { heroConfig } from './Hero';
 
+/**
+ * Safe base URL for metadata and canonical links.
+ * `new URL()` throws if NEXT_PUBLIC_URL is missing a protocol (e.g. "example.com"),
+ * which causes a 500 on every page in production.
+ */
+export function getSiteOrigin(): string {
+  const raw = process.env.NEXT_PUBLIC_URL?.trim();
+  if (!raw) return 'http://localhost:3000';
+  try {
+    const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+    return new URL(withProtocol).origin;
+  } catch {
+    return 'http://localhost:3000';
+  }
+}
+
 export interface PageMeta {
   title: string;
   description: string;
@@ -12,16 +28,17 @@ export interface PageMeta {
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Sleek Portfolio',
-  description: 'Sleek Portfolio Template by @Ramxcodes',
-  url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
+  title: 'Nikhilesh Sarraf — Portfolio',
+  description:
+    'Portfolio of Nikhilesh Sarraf — web development, projects, and experience.',
+  url: getSiteOrigin(),
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: about.name,
-    twitter: '@ramxcodes',
-    github: 'ramxcodes',
-    linkedin: 'ramxcodes',
-    email: 'ramxcodes@gmail.com',
+    twitter: '@NikhileshSarraf',
+    github: 'Nikhilesh-sarraf',
+    linkedin: 'nikhilesh-sarraf',
+    email: 'nikhileshsarrafking123@gmail.com',
   },
   keywords: [
     'portfolio',
@@ -90,22 +107,6 @@ export const pageMetadata: Record<string, PageMeta> = {
       'software',
     ],
     ogImage: '/meta/projects.png',
-    twitterCard: 'summary_large_image',
-  },
-
-  // Blog page
-  '/blog': {
-    title: 'Blog - Thoughts & Tutorials',
-    description:
-      'Read my thoughts, tutorials, and insights on engineering, programming, and web development.',
-    keywords: [
-      'blog',
-      'tutorials',
-      'programming',
-      'web development',
-      'technical writing',
-    ],
-    ogImage: '/meta/blogs.png',
     twitterCard: 'summary_large_image',
   },
 

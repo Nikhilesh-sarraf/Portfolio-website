@@ -1,0 +1,125 @@
+﻿
+> sleek-portfolio@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.3.8
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 11.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/33) ...
+node.exe : Umami 
+Analytics is not 
+configured.
+At C:\Program Files\no
+dejs\npm.ps1:29 char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (Umami Anal   
+ ytics is not conf    
+igured.:String) [    
+], RemoteExceptio    n
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+   Generating static pages (8/33) 
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+   Generating static pages (16/33) 
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+   Generating static pages (24/33) 
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+Umami Analytics is 
+not configured.
+ Γ£ô Generating static pages (33/33)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                    Size  First Load JS
+Γöî Γùï /                                       10.4 kB         164 kB
+Γö£ Γùï /_not-found                               986 B         103 kB
+Γö£ ╞Æ /api/chat                                 140 B         102 kB
+Γö£ ╞Æ /api/contact                              140 B         102 kB
+Γö£ Γùï /blog                                   5.57 kB         125 kB
+Γö£ ΓùÅ /blog/[slug]                            14.8 kB         160 kB
+Γö£   Γö£ /blog/better-frontend-part-1
+Γö£   Γö£ /blog/how-to-be-me
+Γö£   Γö£ /blog/javascript-for-frontend-part-1
+Γö£   Γöö [+2 more paths]
+Γö£ Γùï /contact                                33.6 kB         145 kB
+Γö£ Γùï /gears                                  2.02 kB         116 kB
+Γö£ Γùï /journey                                2.29 kB         136 kB
+Γö£ Γùï /journey/certificates                   3.41 kB         133 kB
+Γö£ Γùï /projects                                5.8 kB         151 kB
+Γö£ ΓùÅ /projects/[slug]                         4.5 kB         141 kB
+Γö£   Γö£ /projects/appwrite-mcp-server
+Γö£   Γö£ /projects/chill-guy
+Γö£   Γö£ /projects/fest-x
+Γö£   Γöö [+9 more paths]
+Γö£ Γùï /resume                                 2.31 kB         117 kB
+Γö£ Γùï /setup                                    862 B         115 kB
+Γöö Γùï /work-experience                        2.45 kB         134 kB
++ First Load JS shared by all                102 kB
+  Γö£ chunks/4bd1b696-dca2a974fa29c73a.js     53.2 kB
+  Γö£ chunks/684-32b490115517ff82.js          46.6 kB
+  Γöö other shared chunks (total)             2.02 kB
+
+
+Γùï  (Static)   prerendered as static content
+ΓùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+╞Æ  (Dynamic)  server-rendered on demand
+
