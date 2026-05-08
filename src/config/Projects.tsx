@@ -1,6 +1,8 @@
 import CSS from '@/components/technologies/CSS';
+import Github from '@/components/technologies/Github';
 import Html from '@/components/technologies/Html';
 import JavaScript from '@/components/technologies/JavaScript';
+import MDXIcon from '@/components/technologies/MDXIcon';
 import NextJs from '@/components/technologies/NextJs';
 import Postman from '@/components/technologies/Postman';
 import ReactIcon from '@/components/technologies/ReactIcon';
@@ -9,6 +11,25 @@ import Vercel from '@/components/technologies/Vercel';
 import { Project } from '@/types/project';
 
 export const projects: Project[] = [
+  {
+    title: 'ChatGPT Exporter',
+    description:
+      'A Chrome extension to export ChatGPT conversations directly to GitHub with clean Markdown formatting and selective export options.',
+    image: '/project/chatgpt-exporter.png',
+    link: 'https://chromewebstore.google.com/detail/geafjnnpafgniemfjbhennjehaicllhk',
+    technologies: [
+      { name: 'JavaScript', icon: <JavaScript key="js" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'GitHub API', icon: <Github key="github" /> },
+      { name: 'Markdown', icon: <MDXIcon key="mdx" /> },
+    ],
+    github: 'https://github.com/Nikhilesh-sarraf',
+    live: 'https://chromewebstore.google.com/detail/geafjnnpafgniemfjbhennjehaicllhk',
+    details: false,
+    projectDetailsPageSlug:
+      'https://chromewebstore.google.com/detail/geafjnnpafgniemfjbhennjehaicllhk',
+    isWorking: true,
+  },
   {
     title: 'StickyNoteX',
     description:
