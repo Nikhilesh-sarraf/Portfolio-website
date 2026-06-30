@@ -1,4 +1,4 @@
-# Sleek Portfolio by ramxcodes
+# Sleek Portfolio by nikhilesh
 
 A modern, responsive portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and Shadcn UI. Features a blog system, project showcase, work experience timeline, real-time GitHub integration, and contact form with Gmail/Nodemailer support.
 
